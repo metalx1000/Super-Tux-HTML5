@@ -7,12 +7,14 @@
     <script>
         var height = 600;
         var width = 800;
+        var world_width = width;
         var player_speed = 300;
         var player_decel = 4;
         var player_face = "right";
         var player_jump_vel = 550;
         var player_run = 0;
-        var numCoins = 6;
+        var numCoinsStart = Math.floor(world_width / 110);
+        var numCoins = numCoinsStart; 
         //add gamepad1 var
         var pad1;
 
@@ -20,6 +22,7 @@
 
         function preload() {
             game.load.audio('music', ['res/music.ogg', 'res/music.mp3']);
+            game.load.audio('complete', ['res/leveldone.ogg', 'res/leveldone.mp3']);
             game.load.audio('jump', ['res/jump.ogg', 'res/jump.mp3']);
             game.load.audio('coin', ['res/coin.ogg', 'res/coin.mp3']);
             game.load.audio('brick', ['res/brick.ogg', 'res/brick.mp3']);
@@ -168,13 +171,13 @@
         function load_coins(){
             coins = game.add.group();
             coins.enableBody = true;
-            for (var i = 0; i < numCoins; i++)
+            for (var i = 0; i < numCoinsStart; i++)
             {
                 var coin = coins.create(i * width / numCoins + 64, 0, 'coin');
                 coin.scale.setTo(1.5,1.5);
                 coin.body.gravity.y = 300;
                 coin.body.bounce.y = 0.2;
-                coin.animations.add('spin', [0, 1, 2,3], 10, true);
+                coin.animations.add('spin', [0, 1, 2], 10, true);
                 coin.animations.play('spin');
 
             }            
@@ -184,6 +187,19 @@
             coin.kill();
             var coin = game.add.audio('coin');
             coin.play();
+            numCoins -= 1;
+            if(numCoins == 0){
+              music.stop();
+              music = game.add.audio('complete');
+              music.play();
+              numCoins = numCoinsStart;
+              load_coins();
+              setTimeout(function(){
+                music.stop();
+                music = game.add.audio('music');
+                music.play();
+              },7000);
+            }
         }
 
         function go_fullscreen(){
