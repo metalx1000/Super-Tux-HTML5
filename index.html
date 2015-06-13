@@ -14,8 +14,7 @@
         var game = new Phaser.Game(width, height, Phaser.AUTO, '', { preload: preload, create: create, update: update });
 
         function preload() {
-            game.load.audio('music', ['res/music.ogg', 'res/music.mp3']);
-            game.load.audio('complete', ['res/leveldone.ogg', 'res/leveldone.mp3']);
+            preload_music();
             preload_player();
             preload_coins();
             preload_platforms(); 
@@ -23,8 +22,7 @@
         }
 
         function create() {
-            music = game.add.audio('music');
-            music.play('',0,1,true);
+            create_music();
             game.physics.startSystem(Phaser.Physics.ARCADE);
             load_player();
 
@@ -54,5 +52,6 @@
     <script src="js/player.js"></script>
     <script src="js/platforms.js"></script>
     <script src="js/bricks.js"></script>
+    <script src="js/music.js"></script>
 </body>
 </html>
