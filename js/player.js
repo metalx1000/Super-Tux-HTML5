@@ -11,7 +11,7 @@ function preload_player(){
 
 }
 
-function load_player(){
+function create_player(){
   player = game.add.sprite(10, height - 256, 'player');
   player.scale.setTo(1.5,1.5);
   player.animations.add('left', [0, 1, 2], 10, true);

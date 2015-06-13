@@ -2,7 +2,7 @@ function preload_platforms(){
   game.load.image('ground', 'res/ground.png');
 }
 
-function load_platforms(){
+function create_platforms(){
   platforms = game.add.group();
   platforms.enableBody = true;
 

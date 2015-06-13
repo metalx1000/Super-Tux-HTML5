@@ -24,11 +24,11 @@
         function create() {
             create_music();
             game.physics.startSystem(Phaser.Physics.ARCADE);
-            load_player();
+            create_player();
 
-            load_platforms();
-            load_bricks();
-            load_coins();
+            create_platforms();
+            create_bricks();
+            create_coins();
 
             game.input.onDown.add(go_fullscreen, this);
 

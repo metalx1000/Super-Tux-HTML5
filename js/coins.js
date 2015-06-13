@@ -6,7 +6,7 @@ function preload_coins(){
   game.load.spritesheet('coin', 'res/coin.png', 32, 32);
 }
 
-function load_coins(){
+function create_coins(){
     coins = game.add.group();
     coins.enableBody = true;
     for (var i = 0; i < numCoinsStart; i++)
@@ -47,7 +47,7 @@ function all_coins(){
   music = game.add.audio('complete');
   music.play();
   numCoins = numCoinsStart;
-  load_coins();
+  create_coins();
   setTimeout(function(){
     music.stop();
     music = game.add.audio('music');

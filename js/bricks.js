@@ -3,7 +3,7 @@ function preload_bricks(){
   game.load.image('brick', 'res/brick.png');
 }
 
-function load_bricks(){
+function create_bricks(){
   bricks = game.add.group();
   bricks.enableBody = true;
 
@@ -42,5 +42,5 @@ function hit_brick(player, brick){
 
 function reset_bricks(){
   bricks.removeAll();
-  load_bricks(); 
+  create_bricks(); 
 }
