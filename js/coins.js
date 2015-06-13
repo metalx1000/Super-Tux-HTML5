@@ -15,7 +15,7 @@ function load_coins(){
         coin.scale.setTo(1.5,1.5);
         coin.body.gravity.y = 300;
         coin.body.bounce.y = 0.2;
-        coin.animations.add('spin', [0, 1, 2], 10, true);
+        coin.animations.add('spin', [0, 1, 2, 1], 10, true);
         coin.animations.play('spin');
 
     }            
