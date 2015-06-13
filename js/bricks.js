@@ -40,3 +40,7 @@ function hit_brick(player, brick){
   }
 }
 
+function reset_bricks(){
+  bricks.removeAll();
+  load_bricks(); 
+}

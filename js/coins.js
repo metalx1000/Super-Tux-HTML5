@@ -36,16 +36,22 @@ function collect_coins(player,coin){
     coin.play();
     numCoins -= 1;
     if(numCoins == 0){
-      music.stop();
-      music = game.add.audio('complete');
-      music.play();
-      numCoins = numCoinsStart;
-      load_coins();
-      setTimeout(function(){
-        music.stop();
-        music = game.add.audio('music');
-        music.play();
-      },7000);
+      all_coins();
+      reset_bricks();
     }
+}
+
+//all coins collected
+function all_coins(){
+  music.stop();
+  music = game.add.audio('complete');
+  music.play();
+  numCoins = numCoinsStart;
+  load_coins();
+  setTimeout(function(){
+    music.stop();
+    music = game.add.audio('music');
+    music.play();
+  },7000);
 }
 
