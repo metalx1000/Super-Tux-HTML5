@@ -22,6 +22,12 @@ function load_player(){
   player.body.bounce.y = 0.2;
   player.body.gravity.y = 600;
   player.body.collideWorldBounds = true;
+
+  //Make player move faster (run) when "F" key is also pressed
+  keyF = game.input.keyboard.addKey(Phaser.Keyboard.F);
+  keyF.onDown.add(player_run_true, this);
+  keyF.onUp.add(player_run_false, this);
+
 }
 
 function update_player(){
@@ -42,7 +48,7 @@ function player_jump(){
   player.body.velocity.y = -player_jump_vel;
 }
 
-function player_run_true(){player_run = 200}
+function player_run_true(){player_run = 300}
 function player_run_false(){player_run = 0}
 
 function player_velocity(){

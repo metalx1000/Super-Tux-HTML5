@@ -32,10 +32,6 @@
             load_bricks();
             load_coins();
 
-            keyF = game.input.keyboard.addKey(Phaser.Keyboard.F);
-            keyF.onDown.add(player_run_true, this);
-            keyF.onUp.add(player_run_false, this);
-
             game.input.onDown.add(go_fullscreen, this);
 
         }
