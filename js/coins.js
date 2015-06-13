@@ -21,6 +21,14 @@ function load_coins(){
     }            
 }
 
+function update_coins(){
+  coins_physics();
+}
+
+function coins_physics(){
+  game.physics.arcade.collide(coins, bricks);
+  game.physics.arcade.collide(coins, platforms);
+}
 
 function collect_coins(player,coin){
     coin.kill();

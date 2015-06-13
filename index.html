@@ -41,17 +41,8 @@
         }
 
         function update() {
-            game.physics.arcade.collide(player, platforms);
-            game.physics.arcade.collide(player, bricks, hit_brick, null, this);
-            game.physics.arcade.collide(coins, bricks);
-            game.physics.arcade.collide(coins, platforms);
-
-            game.physics.arcade.overlap(player, coins, collect_coins, null, this);
-            
-            game.physics.arcade.overlap(player, bricks, hit_brick, null, this);
-
             update_player();
-
+            update_coins();
         }        
 
         function go_fullscreen(){

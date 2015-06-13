@@ -3,6 +3,7 @@ var player_decel = 4;
 var player_face = "right";
 var player_jump_vel = 550;
 var player_run = 0;
+var pad1;
 
 function preload_player(){
   game.load.spritesheet('player', 'res/player_walk.png', 46, 66);
@@ -24,8 +25,15 @@ function load_player(){
 }
 
 function update_player(){
+  player_physics();
   player_velocity();
   player_controls();
+}
+
+function player_physics(){
+  game.physics.arcade.collide(player, platforms);
+  game.physics.arcade.collide(player, bricks, hit_brick, null, this);
+  game.physics.arcade.overlap(player, coins, collect_coins, null, this);
 }
 
 function player_jump(){
