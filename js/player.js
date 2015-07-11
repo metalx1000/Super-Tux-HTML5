@@ -1,5 +1,5 @@
 var player_speed = 300;
-var player_decel = 4;
+var player_decel = 6;
 var player_face = "right";
 var player_jump_vel = 550;
 var player_run = 0;
@@ -16,12 +16,13 @@ function create_player(){
   player.scale.setTo(1.5,1.5);
   player.animations.add('left', [0, 1, 2], 10, true);
   player.animations.add('right', [3, 4, 5], 10, true);
+  game.camera.follow(player);
 
   game.physics.arcade.enable(player);
  
   player.body.bounce.y = 0.2;
   player.body.gravity.y = 600;
-  player.body.collideWorldBounds = true;
+  //player.body.collideWorldBounds = true;
 
   //Make player move faster (run) when "F" key is also pressed
   keyF = game.input.keyboard.addKey(Phaser.Keyboard.F);
@@ -37,8 +38,7 @@ function update_player(){
 }
 
 function player_physics(){
-  game.physics.arcade.collide(player, platforms);
-  game.physics.arcade.collide(player, bricks, hit_brick, null, this);
+  game.physics.arcade.collide(player, layer);
   game.physics.arcade.overlap(player, coins, collect_coins, null, this);
 }
 
@@ -89,7 +89,7 @@ function player_controls(){
       player_face = "left";
   }
 
-  if(cursors.up.isDown && player.body.touching.down){
+  if(cursors.up.isDown && player.body.blocked.down){
       player_jump();
   }
 

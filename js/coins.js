@@ -26,8 +26,7 @@ function update_coins(){
 }
 
 function coins_physics(){
-  game.physics.arcade.collide(coins, bricks);
-  game.physics.arcade.collide(coins, platforms);
+  game.physics.arcade.collide(coins, layer);
 }
 
 function collect_coins(player,coin){
@@ -37,7 +36,6 @@ function collect_coins(player,coin){
     numCoins -= 1;
     if(numCoins == 0){
       all_coins();
-      reset_bricks();
     }
 }
 
